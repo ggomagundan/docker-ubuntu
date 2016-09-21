@@ -1,5 +1,12 @@
 sudo: required
+language: generic
 
 services:
   - docker
+
+script:
+  - docker build --pull -t kaipark/ubuntu .
+
+after_success:
+  - echo "Success"
 
