@@ -1,4 +1,5 @@
-FROM ubuntu:16.04
+# Based on ubuntu 18.04
+FROM ubuntu:bionic
 MAINTAINER Kai Park <ggogun@gmail.com>
 
 # CHANG shell_command sh to bash
@@ -10,7 +11,7 @@ RUN apt-get update
 # Install basic packages
 RUN apt-get install -qq -y git-core curl zlib1g-dev build-essential libssl-dev
 RUN apt-get install -qq -y libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev
-RUN apt-get install -qq -y python-software-properties libffi-dev python-dev
+RUN apt-get install -qq -y libffi-dev python-dev
 RUN apt-get install -qq -y software-properties-common
 RUN apt-get install -qq -y vim cmake vim-gtk
 RUN apt-get install -qq -y wget silversearcher-ag
