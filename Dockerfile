@@ -8,6 +8,15 @@ RUN ln -sf /bin/bash /bin/sh
 # Update source list
 RUN apt-get update
 
+# https://stackoverflow.com/a/44628005
+ENV TZ 'Asia/Seoul'
+RUN echo $TZ > /etc/timezone && \
+  apt-get update && apt-get install -y tzdata && \
+  rm /etc/localtime && \
+  ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+  dpkg-reconfigure -f noninteractive tzdata && \
+  apt-get clean
+
 # Install basic packages
 RUN apt-get install -qq -y git-core curl zlib1g-dev build-essential libssl-dev
 RUN apt-get install -qq -y libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev
